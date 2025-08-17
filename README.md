@@ -36,6 +36,7 @@ Existing autonomous navigation solutions rely on expensive hardware and propriet
 2. **LiDAR**: RP Lidar A1/A2 or similar.  
 3. **Microcontroller**: Raspberry Pi 4 and Arduino.  
 4. **Power Supply**: Rechargeable LiPo battery (e.g., 11.1V, 3S).  
+5. **Motor Driver**: Motor Driver used is BTS7960 although the project supports (L298N, POLOLU_MC33926, POLOLU_VNH5019, ROBOGAIA Motor encoder shields as well)
 
 ---
 
