@@ -132,27 +132,34 @@ Uncomment the line of motor driver accordingly in the headers section. (L298N an
    ```
    ros2 launch slam_toolbox online_async_launch.py
    ``` 
-   4. Open rviz2 to view the map (assuming you are in root of workspace)
+   6. Open rviz2 to view the map (assuming you are in root of workspace)
    ```
    rviz2 -d src/articubot_one/config/map.rviz
    ```
    You should see a map forming around the bot
 
-   5. Slowly move the bot around the area to create the map. Avoid moving object at this stage to prevent weird obstacles on the map. When you are satisfied with the map. Go to rviz2 -> Panels -> Add new panel -> SlamToolboxPlugin. Give your map the name you edited in the earlier step in serialize map textbox and press `Serialize Map` button to save the map
+   7. Slowly move the bot around the area to create the map. Avoid moving object at this stage to prevent weird obstacles on the map. When you are satisfied with the map. Go to rviz2 -> Panels -> Add new panel -> SlamToolboxPlugin. Give your map the name you edited in the earlier step in serialize map textbox and press `Serialize Map` button to save the map
 
-   6. Close rviz2 and slam_toolbox running in the window. Instead launch
+   8. Close rviz2 and slam_toolbox running in the window. Instead launch
    ```
    ros2 launch articubot_one online_async.launch.py
    ```
    This will launch slam_toolbox in localization mode
    
-   7. Open rviz2 again and you should see the saved map load up once again. Move the bot around a bit to let it recalibrate its postion in the map
+   9. Open rviz2 again and you should see the saved map load up once again. Move the bot around a bit to let it recalibrate its postion in the map
 
-   8. Run
+   10. Run
    ```
    ros2 launch articubot_one navigation.launch.py\
    ```
 
-   9. In Rviz2 go to Map -> topic -> Change to global_costmap. Also change color scheme to costmap
-   
-   10. Assign goal pose using goal pose button and then clicking and dragging on the map to assign a goal pose. If all went well the robot should start planning and following the goal.
+   11. In Rviz2 go to Map -> topic -> Change to global_costmap. Also change color scheme to costmap
+
+   12. Assign goal pose using goal pose button and then clicking and dragging on the map to assign a goal pose. If all went well the robot should start planning and following the goal.
+
+### List of dependencies
+On top of ROS2 already installed you should also have slam_toolbox, ros2_control, ros2_nav2 stack,  according to their respective installation instructions available on their home page alongside the dependencies.
+Also install `ros-humble-twist-mux`, `ros-humble-joy` and `ros-humble-rplidar-ros` packages
+
+### For Simulation
+If you wish to use the simulation then you need to find the gazebo-ros2-control v4.5 package release on github. Clone it and the build it manually to use for ros2_control in gazebo. The release available via apt repository is bugged and EOL. Also install gazbeo classic if you wish to use the simulation. Following the simulation launch file(launch_sim.launch.py) you should follow steps 5-12 from real robot to test it in simulation.
