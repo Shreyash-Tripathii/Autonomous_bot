@@ -137,16 +137,22 @@ Uncomment the line of motor driver accordingly in the headers section. (L298N an
    rviz2 -d src/articubot_one/config/map.rviz
    ```
    You should see a map forming around the bot
+
    5. Slowly move the bot around the area to create the map. Avoid moving object at this stage to prevent weird obstacles on the map. When you are satisfied with the map. Go to rviz2 -> Panels -> Add new panel -> SlamToolboxPlugin. Give your map the name you edited in the earlier step in serialize map textbox and press `Serialize Map` button to save the map
+
    6. Close rviz2 and slam_toolbox running in the window. Instead launch
    ```
    ros2 launch articubot_one online_async.launch.py
    ```
    This will launch slam_toolbox in localization mode
+   
    7. Open rviz2 again and you should see the saved map load up once again. Move the bot around a bit to let it recalibrate its postion in the map
+
    8. Run
    ```
    ros2 launch articubot_one navigation.launch.py\
    ```
+
    9. In Rviz2 go to Map -> topic -> Change to global_costmap. Also change color scheme to costmap
+   
    10. Assign goal pose using goal pose button and then clicking and dragging on the map to assign a goal pose. If all went well the robot should start planning and following the goal.
